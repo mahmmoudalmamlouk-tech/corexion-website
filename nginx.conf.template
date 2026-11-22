@@ -10,9 +10,15 @@ server {
     add_header X-Content-Type-Options "nosniff" always;
     add_header Referrer-Policy "strict-origin-when-cross-origin" always;
 
+    # Files are stored flat in the repository: map folder paths to the root
     location /assets/ {
+        rewrite ^/assets/[a-z]+/(.*)$ /$1 break;
         expires 30d;
         add_header Cache-Control "public, max-age=2592000";
+    }
+
+    location /insights/ {
+        rewrite ^/insights/(.*)$ /$1 last;
     }
 
     location / {
