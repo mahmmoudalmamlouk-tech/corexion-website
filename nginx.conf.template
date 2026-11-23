@@ -13,6 +13,8 @@ server {
     # old article links from the previous site
     rewrite ^/insights/([a-z0-9-]+?)(\.html)?$ /article-$1.html permanent;
     rewrite ^/assets/img/(.*)$ /$1 permanent;
+    # old flat article URLs
+    rewrite ^/(lower-payments-dont-prove-savings|cheaper-substitution-costs-more|completion-handover-readiness|progress-reports-mask-exposure|mobilization-gates|risk-management-that-changes-decisions|controlled-design-release|contracts-and-claims|schedule-recovery|receipt-review-approval-authorization)(\.html)?$ /article-$1.html permanent;
 
     location ~* \.(jpg|jpeg|png|svg|css|js|ico)$ {
         expires 30d;
