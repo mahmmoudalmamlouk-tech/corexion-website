@@ -1,0 +1,96 @@
+html{-webkit-text-size-adjust:100%!important;text-size-adjust:100%!important}
+/* COREXION — mobile layer (applies when body has class "m", width <= 820px) */
+body.m #wrap{overflow:visible;height:auto!important}
+body.m #page{width:100%!important;transform:none!important}
+body.m #page>div{width:100%!important}
+body.m #stick{display:none!important}
+body.m #page *{box-sizing:border-box}
+body.m #page img{max-width:100%}
+
+/* header + burger */
+body.m #page header{position:sticky!important;top:0;z-index:60;height:68px!important;padding:0 20px!important}
+body.m #page header>img{height:38px!important}
+body.m #page header nav{display:none!important}
+body.m .mburger{display:flex}
+.mburger{display:none;width:44px;height:44px;align-items:center;justify-content:center;flex-direction:column;gap:6px;background:none;border:1.5px solid rgba(255,255,255,.5);cursor:pointer;padding:0}
+.mburger span{display:block;width:20px;height:2px;background:#fff;transition:transform .2s,opacity .2s}
+.mburger.open span:nth-child(1){transform:translateY(8px) rotate(45deg)}
+.mburger.open span:nth-child(2){opacity:0}
+.mburger.open span:nth-child(3){transform:translateY(-8px) rotate(-45deg)}
+.mmenu{display:none;position:fixed;left:0;right:0;top:68px;bottom:0;z-index:59;background:#061A33;padding:8px 20px 32px;overflow:auto;font-family:'Fira Sans',sans-serif}
+.mmenu.open{display:block}
+.mmenu a{display:flex;justify-content:space-between;align-items:center;color:#fff;text-decoration:none;font-size:21px;font-weight:700;padding:18px 0;border-bottom:1px solid rgba(255,255,255,.18)}
+.mmenu a.cur{color:#fff}
+.mmenu a.cur span:first-child{display:flex;align-items:center}.mmenu a.cur span:first-child:before{content:'';display:inline-block;width:3px;height:24px;background:#fff;margin-right:14px}
+.mmenu a.cta{margin-top:28px;justify-content:center;border:1.5px solid #fff;font-size:17px;font-weight:600;padding:16px}
+.mmenu .mmail{margin-top:28px;color:rgba(255,255,255,.6);font-size:14px;letter-spacing:.16em;font-weight:600}
+.mmenu .mmail b{display:block;margin-top:8px;color:#fff;font-size:19px;letter-spacing:0;font-weight:600}
+
+/* sections + grids */
+body.m #page section{padding:56px 20px!important;height:auto!important;min-height:0!important;gap:28px!important}
+body.m #page section[style*="padding: 84px 64px 40px"]{padding-bottom:12px!important}
+body.m #page footer{padding:48px 20px 28px!important}
+body.m #page [style*="grid-template-columns"]{grid-template-columns:1fr!important;column-gap:0!important;row-gap:28px!important}
+body.m #page [style*="grid-column"]{grid-column:auto!important}
+body.m #page [style*="flex: 0 0 560px"],body.m #page [style*="flex: 1 1 520px"],body.m #page [style*="flex: 1 1 420px"]{flex:1 1 100%!important}
+body.m #page [style*="width: 1080px"],body.m #page [style*="width: 900px"],body.m #page [style*="width: 820px"],body.m #page [style*="width: 760px"]{width:100%!important}
+body.m #page [style*="max-width"]{max-width:100%!important}
+body.m #page [style*="display: flex"]:not(header):not(nav){flex-wrap:wrap}
+body.m #page [style*="position: absolute; left: 64px"]{position:relative!important;left:0!important;width:100%!important;padding:56px 20px!important;top:auto!important;bottom:auto!important}
+body.m #page [style*="padding-left: 40px; border-left"]{padding-left:0!important;border-left:0!important}
+
+/* type scale (mobile) — 32 / 26 / 21 / 19 / 17 / 16 / 14 */
+body.m #page h1,body.m #page [style*="font-size: 60px"]{font-size:32px!important;line-height:1.15!important}
+body.m #page h2,body.m #page [style*="font-size: 40px"]{font-size:26px!important;line-height:1.2!important}
+body.m #page [style*="font-size: 30px"]{font-size:21px!important;line-height:1.3!important}
+body.m #page [style*="font-size: 24px"]{font-size:19px!important}
+body.m #page p[style*="font-size: 24px"]{font-size:17px!important}
+body.m #page [style*="font-size: 21px"]{font-size:17px!important}
+body.m #page [style*="font-size: 19px"]{font-size:17px!important}
+body.m #page [style*="font-size: 17px"]{font-size:16px!important}
+body.m #page [style*="font-size: 84px"]{font-size:52px!important}
+body.m #page blockquote{font-size:21px!important;padding:16px 0 16px 18px!important}
+
+/* images */
+body.m #page img[style*="height: 620px"],body.m #page img[style*="height: 520px"],body.m #page img[style*="height: 460px"]{height:240px!important;min-height:0!important}
+body.m #page img[style*="min-height: 460px"]{height:240px!important;min-height:0!important}
+body.m #page img[style*="height: 280px"],body.m #page img[style*="height: 230px"]{height:210px!important}
+body.m #page img[data-thumb]{width:100%!important;flex:1 1 100%!important;height:180px!important}
+body.m #page [style*="height: 460px"],body.m #page [style*="height: 520px"]{height:300px!important}
+body.m #page aside{padding:32px 24px!important}
+
+/* nav-like tab rows scroll sideways instead of wrapping */
+body.m #page nav[aria-label]{flex-wrap:nowrap!important;overflow-x:auto;-webkit-overflow-scrolling:touch;gap:24px!important}
+body.m #page nav[aria-label] a{flex:0 0 auto}
+
+/* big padded boxes */
+body.m #page [style*="padding: 64px 64px"],body.m #page [style*="padding: 56px 56px"],body.m #page [style*="padding: 56px 52px"],body.m #page [style*="padding: 48px 44px"]{padding:32px 24px!important}
+body.m #page [style*="padding: 34px"]{padding:28px 24px!important}
+body.m #page form label{grid-column:auto!important}
+
+/* overflow guards */
+body.m #page section>*,body.m #page section>*>*{min-width:0;max-width:100%}
+body.m #page nav[aria-label]{width:100%}
+body.m #page h1,body.m #page h2,body.m #page h3{white-space:normal!important}
+body.m #page [style*="flex: 0 0 440px"],body.m #page [style*="flex: 0 0 420px"],body.m #page [style*="flex: 0 0 400px"],body.m #page [style*="flex: 0 0 380px"],body.m #page [style*="flex: 0 0 360px"],body.m #page [style*="flex: 0 0 340px"],body.m #page [style*="flex: 0 0 320px"],body.m #page [style*="flex: 0 0 300px"]{flex:1 1 100%!important;width:100%!important}
+body.m #page [style*="display: flex; gap: 24px; margin-top: 16px"]{display:grid!important;grid-template-columns:1fr 1fr!important;gap:24px 16px!important}
+
+body.m #page footer [style*="text-align: right"]{text-align:left!important;align-items:flex-start!important}
+body.m #page footer [style*="align-items: flex-end"]{align-items:flex-start!important}
+body.m #page li[style*="display: flex"],body.m #page label[style*="display: flex"][style*="gap: 14px"]{flex-wrap:nowrap!important}
+body.m #page p[style*="font-size: 30px"],body.m #page [style*="Bitter"][style*="font-size: 30px"]{font-size:19px!important;line-height:1.5!important}
+body.m #page section[style^="padding: 0 "]{padding-top:0!important}
+body.m #page section[style*="padding: 84px 64px 48px"]{padding-bottom:28px!important}
+body.m #page [style*="display: flex; gap: 40px; padding: 30px 0"]{gap:12px!important;padding:24px 0!important}
+body.m #page [style*="margin-top: 60px"]{margin-top:36px!important}
+/* home hero on mobile: text over sky, building below */
+body.m #page section:has(img[alt^="Big Ben"]){min-height:330px!important;padding:0!important}
+body.m #page section:has(img[alt^="Big Ben"]) img{height:118%!important;object-position:84% top!important}
+body.m #page section:has(img[alt^="Big Ben"])>div[style*="inset: 0"]{background:linear-gradient(to bottom,rgba(6,26,51,.9) 0%,rgba(6,26,51,.55) 38%,rgba(6,26,51,0) 62%)!important}
+body.m #page section:has(img[alt^="Big Ben"])>div[style*="position: absolute; left: 64px"]{padding:24px 20px 150px!important;gap:6px!important}
+body.m #page footer [style*="grid-template-columns"]{grid-template-columns:1fr 1fr!important;column-gap:20px!important;row-gap:36px!important}
+body.m #page section[data-st]{padding:4px 20px!important;gap:0!important}
+body.m #page section[data-st]>div{padding:11px 0!important;gap:3px!important;border-left:0!important;border-top:1px solid rgba(255,255,255,.18)}
+body.m #page section[data-st]>div>div:first-child{font-size:19px!important}
+body.m #page section[data-st]>div>div:last-child{font-size:14px!important;line-height:1.4!important}
+body.m #page section[data-st]>div:first-child{border-top:0}
