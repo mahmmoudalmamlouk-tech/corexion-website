@@ -94,3 +94,7 @@ body.m #page section[data-st]>div{padding:11px 0!important;gap:3px!important;bor
 body.m #page section[data-st]>div>div:first-child{font-size:19px!important}
 body.m #page section[data-st]>div>div:last-child{font-size:14px!important;line-height:1.4!important}
 body.m #page section[data-st]>div:first-child{border-top:0}
+/* featured projects carousel on mobile: swipe sideways */
+body.m #page .cx-track{flex-wrap:nowrap!important;padding-right:20px!important;gap:14px!important}
+body.m #page .cx-track>div{flex:0 0 82%!important;height:340px!important}
+body.m #page section:has(.cx-track){padding-right:0!important}
