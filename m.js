@@ -16,7 +16,7 @@
   }
   function apply(){
     var mob=window.innerWidth<=MQ; document.body.classList.toggle('m',mob);
-    if(mob){build();setTimeout(function(){fitHero(true)},30);var p=document.getElementById('page'),w=document.getElementById('wrap');
+    if(mob){build();setTimeout(function(){fitHero(false)},30);var p=document.getElementById('page'),w=document.getElementById('wrap');
       p.style.transform='none';p.style.width='100%';if(p.firstElementChild)p.firstElementChild.style.width='100%';w.style.height='auto';}
     else{var m=document.querySelector('.mmenu');if(m){m.classList.remove('open');document.body.style.overflow='';}}
   }
@@ -29,8 +29,12 @@
     if(!hero||!strip||!hdr)return;
     if(!force&&window.innerWidth===lastW)return; lastW=window.innerWidth;
     var y=window.scrollY; var hb=hdr.getBoundingClientRect().bottom+y;
-    var avail=window.innerHeight-hb-strip.offsetHeight;
-    hero.style.setProperty('min-height',Math.max(330,Math.round(avail))+'px','important');
+    // use the SMALL viewport (browser toolbars shown) so the hero + strip always fit, and never resize while scrolling
+    var pr=document.createElement('div'); pr.style.cssText='position:fixed;top:0;left:0;width:1px;height:100svh;visibility:hidden;pointer-events:none';
+    document.body.appendChild(pr); var sv=pr.offsetHeight; pr.remove();
+    var vh=Math.min(window.innerHeight, sv>0?sv:window.innerHeight);
+    var avail=vh-hb-strip.offsetHeight;
+    hero.style.setProperty('min-height',Math.max(280,Math.round(avail))+'px','important');
   }
   window.addEventListener('load',function(){setTimeout(function(){fitHero(true)},50)});
   window.addEventListener('orientationchange',function(){setTimeout(function(){fitHero(true)},300)});

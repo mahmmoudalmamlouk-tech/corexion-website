@@ -98,3 +98,5 @@ body.m #page section[data-st]>div:first-child{border-top:0}
 body.m #page .cx-track{flex-wrap:nowrap!important;padding-right:20px!important;gap:14px!important}
 body.m #page .cx-track>div{flex:0 0 82%!important;height:340px!important}
 body.m #page section:has(.cx-track){padding-right:0!important}
+body.m #page footer [style*="grid-template-columns"]>div:last-child{grid-column:1/-1}
+body.m #page footer [style*="grid-template-columns"]>div>div:first-child{font-size:18px!important}
