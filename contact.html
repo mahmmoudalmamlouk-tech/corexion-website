@@ -28,7 +28,7 @@ window.addEventListener('resize',fit);window.addEventListener('load',fit);fit();
    var im=c.querySelector('img');if(im){im.style.height='44px';im.style.cursor='pointer';im.onclick=function(){location.href='index.html'}}}
  function onS(){var show=window.scrollY>140;bar.style.opacity=show?1:0;bar.style.pointerEvents=show?'auto':'none';}
  window.addEventListener('scroll',onS);window.addEventListener('resize',function(){setTimeout(sync,50)});window.addEventListener('load',function(){setTimeout(sync,60)});setTimeout(sync,80);
-})();</script><script>(function(){var f=document.querySelector('#page form');if(!f)return;var b=f.querySelector('button');
+})();</script><script>(function(){var WEB3_KEY='11139d76-078d-4ad2-8a00-5a565de8216e';var f=document.querySelector('#page form');if(!f)return;if(WEB3_KEY.indexOf('__')===0)WEB3_KEY='';var hp=document.createElement('input');hp.type='checkbox';hp.name='botcheck';hp.tabIndex=-1;hp.setAttribute('aria-hidden','true');hp.style.display='none';f.appendChild(hp);var b=f.querySelector('button');
 function v(l){var e=[].slice.call(f.querySelectorAll('label')).find(function(x){return x.textContent.indexOf(l)===0});return e?(e.querySelector('input,select,textarea')||{}).value||'':''}
 b.addEventListener('click',function(){var n=v('Full name').trim(),e=v('Email').trim(),m=v('How can we help').trim(),c=f.querySelector('input[type=checkbox]');
 var miss=[];if(!n)miss.push('name');if(!/^\S+@\S+\.\S+$/.test(e))miss.push('a valid email');if(!m)miss.push('a short message');if(c&&!c.checked)miss.push('your agreement to the Privacy Policy');
@@ -36,5 +36,14 @@ var note=f.querySelector('.fnote');if(!note){note=document.createElement('div');
 if(miss.length){note.textContent='Please add '+miss.join(', ')+'.';return}
 var co=v('Company'),ph=v('Phone'),sv=v('Service of interest');if(sv==='Select a service')sv='';
 var body='Name: '+n+'\nCompany: '+co+'\nEmail: '+e+'\nPhone: '+ph+'\nService: '+sv+'\n\n'+m;
-location.href='mailto:info@corexion.uk?subject='+encodeURIComponent('Website enquiry — '+n+(co?' ('+co+')':''))+'&body='+encodeURIComponent(body);
-note.textContent='Your email app should now open with your enquiry ready to send to info@corexion.uk.';});})();</script><script src="m.js?v=bbcb854a"></script></body></html>
+var subj='Website enquiry — '+n+(co?' ('+co+')':'');
+function mail(){location.href='mailto:info@corexion.uk?subject='+encodeURIComponent(subj)+'&body='+encodeURIComponent(body);note.textContent='Your email app should now open with your enquiry ready to send to info@corexion.uk.'}
+if(!WEB3_KEY){mail();return}
+var bot=f.querySelector('input[name=botcheck]');if(bot&&bot.checked)return;
+b.disabled=true;b.style.opacity='0.6';note.textContent='Sending…';
+fetch('https://api.web3forms.com/submit',{method:'POST',headers:{'Content-Type':'application/json','Accept':'application/json'},
+body:JSON.stringify({access_key:WEB3_KEY,subject:subj,from_name:'COREXION website',replyto:e,name:n,email:e,company:co,phone:ph,service:sv,message:m})})
+.then(function(r){return r.json()}).then(function(j){if(j&&j.success){note.textContent='Thank you. Your enquiry has been sent and we will be in touch shortly.';
+[].slice.call(f.querySelectorAll('input:not([type=checkbox]),textarea')).forEach(function(x){x.value=''});var sl=f.querySelector('select');if(sl)sl.selectedIndex=0;if(c)c.checked=false}
+else{throw 0}}).catch(function(){note.textContent='Sorry, the form could not be sent. Please email us at info@corexion.uk.'})
+.then(function(){b.disabled=false;b.style.opacity=''});});})();</script><script src="m.js?v=bbcb854a"></script></body></html>
